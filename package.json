@@ -1,0 +1,52 @@
+{
+  "name": "@mark48evo/gps",
+  "version": "1.0.0",
+  "description": "A library for sharing system wide events",
+  "author": "Aurimas Niekis <aurimas@niekis.lt> (https://github.com/Mark48Evo)",
+  "license": "MIT",
+  "repository": "Mark48Evo/system-events",
+  "contributors": [
+    {
+      "name": "Aurimas Niekis",
+      "email": "aurimas@niekis.lt"
+    }
+  ],
+  "module": "src/index.js",
+  "main": "dist/index.js",
+  "scripts": {
+    "rollup": "rollup -c rollup.config.js",
+    "lint": "eslint ./src",
+    "lint-fix": "eslint ./src --fix"
+  },
+  "files": [
+    "src/",
+    "dist/",
+    "LICENSE",
+    "README.md"
+  ],
+  "dependencies": {
+    "@mark48evo/system-events": "^1.0.4",
+    "@mark48evo/system-state": "^1.1.2",
+    "@mark48evo/ubx-packet-parser": "^1.0.1",
+    "@mark48evo/ubx-protocol-parser": "^1.0.1",
+    "@mark48evo/usb-serialport-device-lister": "^1.0.0",
+    "amqplib": "^0.5.2",
+    "debug": "^3.1.0",
+    "rabbitmq": "0.0.2",
+    "redis": "^2.8.0",
+    "serialport": "^6.2.1"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.0.0-beta.51",
+    "@babel/core": "^7.0.0-beta.51",
+    "@babel/node": "^7.0.0-beta.51",
+    "@babel/plugin-external-helpers": "^7.0.0-beta.51",
+    "@babel/preset-env": "^7.0.0-beta.51",
+    "eslint": "^5.0.1",
+    "eslint-config-airbnb-base": "^13.0.0",
+    "eslint-plugin-import": "^2.13.0",
+    "rollup": "^0.61.2",
+    "rollup-plugin-babel": "^4.0.0-beta.7",
+    "rollup-plugin-eslint": "^4.0.0"
+  }
+}
