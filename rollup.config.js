@@ -5,7 +5,12 @@ export default [
   {
     input: pkg.module,
     output: [
-      { file: pkg.bin['gps'], format: 'cjs', sourcemap: true },
+      {
+        file: pkg.bin.gps,
+        format: 'cjs',
+        sourcemap: true,
+        banner: '#!/usr/bin/env node',
+      },
     ],
     external: [
       'debug',
