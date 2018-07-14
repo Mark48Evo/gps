@@ -13,6 +13,8 @@ var SystemEvents = _interopDefault(require('@mark48evo/system-events'));
 var SystemState = _interopDefault(require('@mark48evo/system-state'));
 var SystemGPS = _interopDefault(require('@mark48evo/system-gps'));
 
+/* eslint-disable no-console */
+
 async function main() {
   const debug = Debug('gps');
   const config = {
@@ -67,20 +69,16 @@ async function main() {
   let previousSatCount = 0;
 
   const parseNavSat = packet => {
-    const connectedSats = packet.data.sats.filter(sat => {
-      return sat.flags.qualityInd.raw >= 4;
-    });
+    const connectedSats = packet.data.sats.filter(sat => sat.flags.qualityInd.raw >= 4);
 
     if (connectedSats.length !== previousSatCount) {
       previousSatCount = connectedSats.length;
-      const sats = connectedSats.map(sat => {
-        return {
-          gnss: sat.gnss.string,
-          satelliteId: sat.svId,
-          signalHealth: sat.flags.health.string,
-          signalStrength: sat.cno
-        };
-      });
+      const sats = connectedSats.map(sat => ({
+        gnss: sat.gnss.string,
+        satelliteId: sat.svId,
+        signalHealth: sat.flags.health.string,
+        signalStrength: sat.cno
+      }));
       systemState.set('gps.nav.sats', sats);
       systemState.set('gps.nav.sats.count', previousSatCount);
     }
